@@ -1,5 +1,6 @@
 import cheerio from 'cheerio';
 import { lookup } from 'mime-types';
+import prettier from 'prettier';
 import constants from '../config/constants';
 import file from './file';
 import { SavedImage } from '../models/image';
@@ -287,7 +288,10 @@ const addMetaTagsToIndexPage = async (
     },
   );
 
-  return file.writeFile(indexHtmlFilePath, $.html());
+  return file.writeFile(
+    indexHtmlFilePath,
+    prettier.format($.html(), { parser: 'html' }),
+  );
 };
 
 export default {
