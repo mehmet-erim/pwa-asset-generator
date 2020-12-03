@@ -290,7 +290,7 @@ const addMetaTagsToIndexPage = async (
 
   return file.writeFile(
     indexHtmlFilePath,
-    prettier.format($.html(), { parser: 'html' }),
+    prettier.format($.html(), { printWidth: 120, parser: 'html' }),
   );
 };
 
